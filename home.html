@@ -1,0 +1,11 @@
+<div class="products" id="product-list">
+<!-- Products loaded by PHP -->
+<?php $res=$conn->query("SELECT * FROM products"); while($row=$res->fetch_assoc()){ ?>
+<div class="card">
+<img src="uploads/<?= $row['image'] ?>">
+<h3><?= $row['name'] ?></h3>
+<p>Rs <?= $row['price'] ?></p>
+<a href="addcart.php?id=<?= $row['id'] ?>">Add to Cart</a>
+</div>
+<?php } ?>
+</div>

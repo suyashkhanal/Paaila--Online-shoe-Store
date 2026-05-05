@@ -1,0 +1,25 @@
+
+<?php session_start(); include 'db.php'; ?>
+<!DOCTYPE html>
+<html>
+<head>
+<title>Paaila - Online Shoe Store</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+
+<body>
+<header>Paaila Shoe Store</header>
+<div class="products">
+<?php $res=$conn->query("SELECT * FROM products"); while($row=$res->fetch_assoc()){ ?>
+<div class="card">
+<img src="<?= $row['image'] ?>">
+<h3><?= $row['name'] ?></h3>
+<p>Rs <?= $row['price'] ?></p>
+<a href="addcart.php?id=<?= $row['id'] ?>">Add to Cart</a>
+</div>
+<?php } ?>
+</div>
+<a href="cart.php">View Cart</a>
+</body>
+</html>
